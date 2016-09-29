@@ -17,7 +17,7 @@ ENV JMETER_VERSION 3.0
 RUN dnf install -y java-$JDK_VERSION-openjdk-devel.x86_64 && rm -rf /var/cache/yum && \
   dnf install -y tar
 
-COPY apache-jmeter-3.0.tgz /var/lib
+COPY apache-jmeter-3.0.tgz /var/lib/
 
 # Install JMeter
 RUN cd /var/lib \
