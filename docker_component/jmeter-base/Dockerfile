@@ -14,6 +14,8 @@ ENV JDK_VERSION 1.8.0
 ENV JMETER_VERSION 2.13 
 ENV JMETER_HOME="/var/lib/apache-jmeter-${JMETER_VERSION}"
 ENV PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+# Heap size for either the client or server in MB
+ENV JM_HEAP=1024
 
 COPY dependencies /tmp/dependencies
 
@@ -35,3 +37,5 @@ RUN cd /var/lib \
   && rm -rf /tmp/dependencies \
   && rm -f /var/lib/apache-jmeter-$JMETER_VERSION/lib/http*-4.5.jar \ 
   && rm -f /var/lib/apache-jmeter-$JMETER_VERSION/lib/httpcore-4.4.1.jar
+
+COPY scripts/jmeter /var/lib/apache-jmeter-$JMETER_VERSION/bin/
